@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package exam;
 
 import java.sql.*;
@@ -10,9 +6,13 @@ import java.util.logging.Logger;
 
 public class database {
 
-    private String dbuser, dbpaswd, url;
+    private final String DBUSER = "root";
+    private final String DNPASWD = "root";
+    private final String URL = "jdbc:mysql://127.0.0.1:8889/mydb2";
+    
+    private String mail;
+    
     public boolean isLogin;
-    public String mail;
 
     public void accountDatabase(String mail) {
         this.mail = pullMail();
@@ -26,12 +26,8 @@ public class database {
 
     public Connection managedb() {
         try {
-            dbuser = "root";
-            dbpaswd = "root";
-            url = "jdbc:mysql://127.0.0.1:8889/mydb2";
-
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, dbuser, dbpaswd);
+            Connection conn = DriverManager.getConnection(URL, DBUSER, DNPASWD);
             return conn;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(database.class.getName()).log(Level.SEVERE, null, ex);
